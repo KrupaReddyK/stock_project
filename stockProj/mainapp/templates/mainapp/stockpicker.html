@@ -1,0 +1,20 @@
+{% extends 'mainapp/base.html' %} {% block content%}
+<h1>Live Stock Tracker</h1>
+{% if user.is_authenticated %}
+<div><a href="/logout">Log out</a></div>
+<div><a href="/profile">Profile</a></div>
+{% endif%}
+<p>Select your stocks</p>
+<form action="/stocktracker">
+  <label for="stockpicker">select stocks:</label>
+
+  <select name="stockpicker" style="width: 50%" multiple>
+    {% for i in stockpicker%}
+    <option value="{{i}}">{{i}}</option>
+    {% endfor %}
+  </select>
+  <br />
+
+  <input type="submit" value="submit" />
+  {% endblock content%}
+</form>
